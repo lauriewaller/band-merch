@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 function NewItemForm(props) {
   return (
     <React.Fragment>
-    <form handleNewItemForm={handleNewItemForm}>
+    <form onSubmit={handleNewItemForm}>
       <input
           type='text'
           name='name'
