@@ -5,18 +5,22 @@ import PropTypes from "prop-types";
 function MerchList(props){
   return( 
     <>
-      {props.merchList.map((item, index) => 
-      <Item name={item.name}
+      {props.merchList.map((item) => 
+      <Item 
+      whenItemClicked={props.onItemSelection}
+      name={item.name}
       description={item.description}
       quantity={item.quantity}
-      key={index} />
+      key={item.id}
+      id={item.id} />
       )}
     </>
   );
 }
 
 MerchList.propTypes = {
-  merchList: PropTypes.array
+  merchList: PropTypes.array,
+  onItemSelection: PropTypes.func
 };
 
 export default MerchList;
