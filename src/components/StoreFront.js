@@ -16,7 +16,17 @@ class StoreFront extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage}));
+    if (this.state.selectedItem != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedI: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   handleAddingNewItemToList = (newItem) => {
@@ -42,11 +52,25 @@ class StoreFront extends React.Component {
     this.setState({editing: true});
   }
 
+  handleEditingItemInList = (itemToEdit) => {
+    const editedMasterItemList = this.state.masterItemList
+      .filter(item => item.id !== this.state.selectedItem.id)
+      .concat(itemToEdit);
+    this.setState({
+      masterItemList: editedMasterItemList,
+      editing: false,
+      selectedTicket: null
+    });  
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null; 
 
-    if (this.state.selectedItem != null) {
+    if (this.state.editing) {
+      currentlyVisibleState = <EditItemForm item = {this.state.selectedItem} onEditItem = {this.handleEditingItemInList} />
+      buttonText = "Return to Item List"; 
+    } else if (this.state.selectedItem != null) {
       currentlyVisibleState = <ItemDetail  item = {this.state.selectedItem} onClickingDelete={this.handleDeletingItem} onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to Item List";
     }
