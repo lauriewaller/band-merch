@@ -19,7 +19,7 @@ class StoreFront extends React.Component {
     if (this.state.selectedItem != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedI: null,
+        selectedItem: null,
         editing: false
       });
     } else {
@@ -31,12 +31,13 @@ class StoreFront extends React.Component {
 
   handleAddingNewItemToList = (newItem) => {
     const newMasterItemList = this.state.masterItemList.concat(newItem);
-    this.setState({masterItemList: newMasterItemList,
-                  formVisibleOnPage: false });
+    this.setState({
+      masterItemList: newMasterItemList,
+      formVisibleOnPage: false });
   } 
 
   handleChangingSelectedItem = (id) => {
-    const selectedItem = this.state.masterItemList.filter(ticket => ticket.id === id)[0];
+    const selectedItem = this.state.masterItemList.filter(item => item.id === id)[0];
     this.setState({selectedItem: selectedItem});
   }  
 
@@ -59,7 +60,7 @@ class StoreFront extends React.Component {
     this.setState({
       masterItemList: editedMasterItemList,
       editing: false,
-      selectedTicket: null
+      selectedItem: null
     });  
   }
 
