@@ -2,7 +2,7 @@
 
 #### A React application to track Spice Girls merch.
 
-#### By **Laurie Waller, Saoud Rana**
+#### By **Laurie Waller, Saoud Rana, and Sofia Acosta**
 
 ## Technologies Used
 
@@ -35,7 +35,7 @@ This application provides full CRUD functionality for a user to add, edit, delet
 
 MIT
 
-Copyright (c) 2021 by Laurie Waller
+Copyright (c) 2021 by Laurie Waller, Saoud Rana, and Sofia Acosta
 
 ## Contact Information
 
